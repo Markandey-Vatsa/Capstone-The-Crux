@@ -1,0 +1,68 @@
+/* Glassmorphism Card Effect */
+/* Glass card effect limited to explicit card elements only */
+.glass-card,
+.glass-card-only { /* unified glassmorphism */
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border:1px solid var(--glass-border);
+    border-radius:16px;
+    transition: background .35s ease,border-color .35s ease,box-shadow .35s ease,transform .3s ease;
+    box-shadow: var(--shadow-sm);
+}
+body.dark-mode .glass-card { box-shadow: var(--shadow); }
+
+/* Prevent unintended blur inheritance on high-level page containers */
+.profile-container, .bookmarks-container, body.profile-page body.bookmarks-page {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.glass-card:hover {border-color: var(--glass-border-strong); box-shadow: var(--shadow-hover), var(--neon-edge); transform:translateY(-4px);} 
+
+/* Container & Layout */
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 20px 30px; /* maintain breathing room */
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.auth-container {
+    max-width: 400px;
+    margin: 10vh auto;
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Typography - Clean & Futuristic */
+h1 {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h3 {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}

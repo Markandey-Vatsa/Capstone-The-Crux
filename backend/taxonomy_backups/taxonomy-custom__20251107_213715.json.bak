@@ -1,0 +1,62 @@
+{
+  "_metadata": [
+    "created",
+    "version",
+    "description"
+  ],
+  "Artificial Intelligence": [
+    "AI",
+    "Artificial Intelligence",
+    "Computer Vision Algorithm",
+    "Deep Learning Model",
+    "Generative AI",
+    "Machine Learning Pipeline",
+    "Neural Network Architecture",
+    "Quantum Computing Breakthrough",
+    "Quantum Entanglement Research",
+    "GPT-4 Architecture",
+    "Transformer Models",
+    "Nvidia H100",
+    "Ai-enhanced Audio"
+  ],
+  "Space & Astronomy": [
+    "Exoplanet Discovery",
+    "Mars Rover Mission",
+    "Stellar Formation",
+    "James Webb Telescope",
+    "Asteroid Impact",
+    "Spacewalk",
+    "Space Station"
+  ],
+  "Clean Energy": [
+    "Clean Energy",
+    "Renewable Energy",
+    "Renewable Energy Storage",
+    "Solar Panel Efficiency"
+  ],
+  "Cryptocurrency": [
+    "Blockchain Protocol",
+    "Cryptocurrency Mining"
+  ],
+  "Biotechnology": [
+    "Gene Therapy Breakthrough",
+    "Liver Organoid"
+  ],
+  "Sports": [
+    "F1",
+    "Formula 1",
+    "Premier League",
+    "Football",
+    "Cricket",
+    "Motorsport"
+  ],
+  "Wellness": [
+    "Sleep Apnea"
+  ],
+  "International Politics": [
+    "Trump"
+  ],
+  "Public Health": [
+    "Public Safety"
+  ]
+}

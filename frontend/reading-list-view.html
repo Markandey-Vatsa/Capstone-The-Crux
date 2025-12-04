@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading List - The Crux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <!-- Modular CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css?v=20250919.1">
+    <link rel="stylesheet" href="css/modals.css?v=20250919">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/bias-analysis.css">
+    <link rel="stylesheet" href="css/reading-list-view.css">
+    <link rel="stylesheet" href="css/shared-list.css">
+    <!-- Global overrides -->
+    <link rel="stylesheet" href="css/style.css?v=20250919">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Reading List Header -->
+        <header class="reading-list-header glass-card">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1 id="listTitle" class="list-title">
+                        <i class="fas fa-list"></i>
+                        <span id="listName">Loading...</span>
+                    </h1>
+                    <p id="listStats" class="list-stats">Loading articles...</p>
+                </div>
+                <div class="header-actions">
+                    <button id="shareBtn" class="btn btn-secondary share-btn">
+                        <i class="fas fa-share"></i>
+                        Share
+                    </button>
+                    <button id="closeBtn" class="btn btn-secondary close-btn">
+                        <i class="fas fa-times"></i>
+                        Close
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="reading-list-content">
+                <!-- Articles Grid (reusing dashboard styles) -->
+                <div id="articlesContainer" class="articles-grid">
+                    <!-- Articles will be loaded here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state glass-card" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>No Articles in This List</h3>
+                    <p>Start adding articles from the dashboard to see them here</p>
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i>
+                        Go to Dashboard
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading articles...</p>
+            </div>
+        </div>
+
+        <!-- Bias Analysis Modal (reusing from dashboard) -->
+        <div class="modal" id="bias-analysis-modal">
+            <div class="modal-content bias-modal-container">
+                <div class="modal-header">
+                    <h2>AI Bias Analysis</h2>
+                    <button class="modal-close" id="bias-modal-close-btn" onclick="closeBiasModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="bias-analysis-loading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Analyzing article for bias...</p>
+                    </div>
+                    <div id="bias-analysis-content" class="hidden">
+                        <div class="bias-analysis-container">
+                            <!-- Original Article Section -->
+                            <div class="original-article">
+                                <h3>Original Article</h3>
+                                <div id="original-article-content"><!-- Filled by JS --></div>
+                            </div>
+                            <!-- AI Analysis Section -->
+                            <div class="ai-analysis">
+                                <h3>AI Bias Analysis</h3>
+                                <div id="ai-analysis-content"><!-- Filled by JS --></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remove Article Confirmation Modal -->
+        <div id="removeModal" class="modal-overlay" style="display: none;">
+            <div class="modal glass-card">
+                <div class="modal-header">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Remove Article</h3>
+                    <button class="close-btn" onclick="closeRemoveModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to remove this article from the reading list?</p>
+                    <p class="info-text">The article will only be removed from this list, not deleted entirely.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeRemoveModal()">Cancel</button>
+                    <button type="button" id="confirmRemoveBtn" class="btn btn-danger">Remove Article</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Share Reading List Modal -->
+        <div id="shareModal" class="modal-overlay" style="display: none;">
+            <div class="modal glass-card">
+                <div class="modal-header">
+                    <h3><i class="fas fa-share"></i> Share Reading List</h3>
+                    <button class="close-btn" onclick="closeShareModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="share-content">
+                        <div class="privacy-controls">
+                            <h4>Privacy Settings</h4>
+                            <div class="privacy-options">
+                                <label class="privacy-option">
+                                    <input type="radio" name="privacy" value="private" id="privateRadio">
+                                    <span class="radio-custom"></span>
+                                    <div class="option-info">
+                                        <strong>Private</strong>
+                                        <p>Only you can view this list</p>
+                                    </div>
+                                </label>
+                                <label class="privacy-option">
+                                    <input type="radio" name="privacy" value="public" id="publicRadio">
+                                    <span class="radio-custom"></span>
+                                    <div class="option-info">
+                                        <strong>Public</strong>
+                                        <p>Anyone with the link can view this list</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="share-url-section" id="shareUrlSection" style="display: none;">
+                            <h4>Share URL</h4>
+                            <div class="url-container">
+                                <input type="text" id="shareUrlInput" class="share-url-input" readonly>
+                                <button id="copyUrlBtn" class="btn btn-secondary btn-small">
+                                    <i class="fas fa-copy"></i>
+                                    Copy
+                                </button>
+                            </div>
+                            <p class="share-info">Anyone with this link can view your reading list. The list will update automatically when you add or remove articles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeShareModal()">Cancel</button>
+                    <button type="button" id="saveShareBtn" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Export functionality modules -->
+    <script src="js/file-generators.js"></script>
+    <script src="js/export-modal.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui-utils.js"></script>
+    <script src="js/reading-list-view.js"></script>
+
+    <!-- Global Spinner Overlay -->
+    <div id="globalSpinner" class="global-spinner-overlay">
+        <div class="spinner-future"></div>
+    </div>
+</body>
+</html>

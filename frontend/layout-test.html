@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Test - The Crux</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/bias-analysis.css">
+    <link rel="stylesheet" href="css/bookmark-styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .comparison {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .comparison h3 {
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+        }
+        .comparison ul {
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .comparison li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Header -->
+    <header class="header container">
+        <h1>The Crux</h1>
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-bar" placeholder="Search news articles...">
+            <span class="mic-icon">🎤</span>
+        </div>
+        <div class="header-actions">
+            <div class="user-actions">
+                <span>Welcome, Test User!</span>
+                <button class="nav-link logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar for Source Filtering -->
+        <aside class="sources-sidebar glass-card">
+            <div class="sidebar-nav">
+                <a href="#" class="nav-link glass-card">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="nav-link glass-card">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Bookmarks</span>
+                </a>
+                <a href="#" class="nav-link glass-card">
+                    <i class="fas fa-list"></i>
+                    <span>Reading Lists</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-header">
+                <h3>News Sources</h3>
+                <input type="text" placeholder="Search sources..." class="source-search-input">
+            </div>
+            <ul class="sources-list">
+                <div class="source-item">
+                    <span class="source-name">ScienceDaily Health</span>
+                    <span class="source-count">45</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-name">TechCrunch</span>
+                    <span class="source-count">67</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-name">Science Journal</span>
+                    <span class="source-count">23</span>
+                </div>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="comparison">
+                <h3>🎯 Layout Improvements Applied</h3>
+                <ul>
+                    <li>✅ <strong>Larger Image Areas:</strong> Increased from 200px to 300px height</li>
+                    <li>✅ <strong>Enhanced Typography:</strong> Bigger titles (1.75rem), better spacing</li>
+                    <li>✅ <strong>Improved Buttons:</strong> Better padding, alignment, and hover effects</li>
+                    <li>✅ <strong>Better Card Design:</strong> Larger border radius, enhanced shadows</li>
+                    <li>✅ <strong>Proper Icon Buttons:</strong> 40px size with hover animations</li>
+                    <li>✅ <strong>Enhanced Meta Info:</strong> Bold source names, better time display</li>
+                </ul>
+            </div>
+
+            <div class="articles-grid" id="articles-container">
+                <!-- Sample Article Card -->
+                <div class="article-card">
+                    <div class="article-media">
+                        <img src="https://via.placeholder.com/800x400/1e3a8a/ffffff?text=Science+News" 
+                             alt="Sample Article" 
+                             class="article-image">
+                    </div>
+                    
+                    <div class="article-content-wrapper">
+                        <div class="article-meta">
+                            <span class="article-source">ScienceDaily Health</span>
+                            <span class="article-time">1h ago</span>
+                            <div class="meta-right">
+                                <button class="btn btn-icon" title="Bookmark">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <button class="btn btn-icon" title="Share">
+                                    <i class="fas fa-share"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <h3 class="article-title">
+                            <a href="#" target="_blank">
+                                This Everyday Vitamin Could Be The Closest Thing We Have To An "Anti-Aging Pill"
+                            </a>
+                        </h3>
+                        
+                        <div class="article-summary">
+                            A study found that daily vitamin D supplements helped slow telomere shortening—the cellular process linked to aging and disease. Researchers believe its anti-inflammatory effects may protect DNA. While promising, more research is needed to confirm these findings.
+                        </div>
+                        
+                        <div class="article-tags">
+                            <span class="tag-pill">Health</span>
+                            <span class="tag-pill">Science</span>
+                            <span class="tag-pill">Research</span>
+                            <span class="tag-pill">Aging</span>
+                            <span class="tag-pill">Vitamins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-actions">
+                        <button class="btn btn-secondary btn-analyze">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>Analyze Bias</span>
+                        </button>
+                        <button class="btn btn-secondary tts-btn">
+                            <i class="fas fa-volume-up"></i>
+                            <span>Listen</span>
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Read Full</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Second Sample Article -->
+                <div class="article-card">
+                    <div class="article-media">
+                        <div class="article-image-placeholder">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="article-content-wrapper">
+                        <div class="article-meta">
+                            <span class="article-source">TechCrunch</span>
+                            <span class="article-time">2h ago</span>
+                            <div class="meta-right">
+                                <button class="btn btn-icon" title="Bookmark">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <button class="btn btn-icon" title="Share">
+                                    <i class="fas fa-share"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <h3 class="article-title">
+                            <a href="#" target="_blank">
+                                Life360 Ventures Into Pet Tech With The Launch Of A New GPS Tracker
+                            </a>
+                        </h3>
+                        
+                        <div class="article-summary">
+                            Family location safety app Life360 is venturing into pet tech with the launch of a new tracking device for cats and dogs. The device offers real-time location tracking, activity monitoring, and health insights for pet owners.
+                        </div>
+                        
+                        <div class="article-tags">
+                            <span class="tag-pill">Technology</span>
+                            <span class="tag-pill">Pets</span>
+                            <span class="tag-pill">GPS</span>
+                            <span class="tag-pill">Startup</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-actions">
+                        <button class="btn btn-secondary btn-analyze">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>Analyze Bias</span>
+                        </button>
+                        <button class="btn btn-secondary tts-btn">
+                            <i class="fas fa-volume-up"></i>
+                            <span>Listen</span>
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Read Full</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Right Category Panel -->
+        <aside id="right-category-panel" class="glass-card">
+            <h3>Categories</h3>
+            <div class="category-tabs">
+                <div class="category-tab active">All News</div>
+                <div class="category-tab">For You</div>
+                <div class="category-tab">Public Health</div>
+                <div class="category-tab">Music</div>
+                <div class="category-tab">Football</div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Mock functions to prevent errors
+        function toggleBookmark() { console.log('Bookmark clicked'); }
+        function shareArticle() { console.log('Share clicked'); }
+        function filterByTag() { console.log('Tag clicked'); }
+        function openBiasAnalysis() { console.log('Bias analysis clicked'); }
+        function toggleTextToSpeech() { console.log('TTS clicked'); }
+    </script>
+</body>
+</html>

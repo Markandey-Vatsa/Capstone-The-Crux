@@ -1,0 +1,5 @@
+# Python dependencies for article management scripts
+pymongo>=4.0.0
+dnspython>=2.0.0  # Required for MongoDB Atlas connections
+python-dotenv>=1.0.0
+Flask>=3.0,<4.0

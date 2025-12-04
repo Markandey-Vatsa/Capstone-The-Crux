@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crux - AI News Aggregator</title>
+    
+    <!-- Favicon - Prism Shard Design -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    
+    <!-- Modular CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css?v=20250919">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css?v=20250919.1">
+    <link rel="stylesheet" href="css/modals.css?v=20250919">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/bias-analysis.css">
+    <link rel="stylesheet" href="css/bookmark-styles.css">
+    <link rel="stylesheet" href="css/style.css?v=20250920"><!-- global overrides -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main Header -->
+    <header class="header container">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <h1>The Crux</h1>
+        
+        <!-- Search Bar with Voice Search -->
+        <div class="search-container">
+            <span class="search-icon" id="search-btn">🔍</span>
+            <input type="text" 
+                   id="search-input" 
+                   class="search-bar" 
+                   placeholder="Search news articles...">
+            <span class="mic-icon" id="voice-search-btn">🎤</span>
+        </div>
+        
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <div class="user-actions">
+                <span id="welcome-message">Welcome, <span id="username-display"></span>!</span>
+                <button class="nav-link logout-btn" onclick="authUtils.logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar for Source Filtering -->
+        <aside class="sources-sidebar glass-card">
+            <!-- Navigation Links -->
+            <div class="sidebar-nav">
+                <a href="profile.html" class="nav-link glass-card">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="bookmarks.html" class="nav-link glass-card">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Bookmarks</span>
+                </a>
+                <a href="reading-lists.html" class="nav-link glass-card">
+                    <i class="fas fa-list"></i>
+                    <span>Reading Lists</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-header">
+                <h3>News Sources</h3>
+                <input type="text" id="source-search" placeholder="Search sources..." class="source-search-input">
+            </div>
+            <ul id="sources-list" class="sources-list">
+                <!-- Sources will be populated dynamically -->
+            </ul>
+        </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+        <!-- Loading indicator -->
+        <div id="loading-indicator" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading articles...</p>
+        </div>
+
+        <!-- Articles Grid -->
+        <div id="daily-briefing-container" class="glass-card">
+            <div class="briefing-inner">
+                <span class="briefing-icon" aria-hidden="true">🧠</span>
+                <div id="daily-briefing-text" class="briefing-text">Generating your briefing...</div>
+                <button id="refresh-briefing-btn" class="btn btn-secondary btn-small glass-card" style="margin-left:auto;display:none;" title="Refresh briefing">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+        <div class="articles-grid" id="articles-container">
+            <!-- Articles will be dynamically inserted here -->
+        </div>
+
+        <!-- Infinite Scroll Trigger -->
+        <div id="infinite-scroll-trigger" class="infinite-scroll-trigger"></div>
+
+        <!-- Hybrid 'Load More' Button -->
+        <button id="load-more-btn" class="hidden">Load More</button>
+
+        <!-- Loading indicator for infinite scroll -->
+        <div id="infinite-scroll-loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading more articles...</p>
+        </div>
+        </main>
+        <!-- Right Floating Category Panel -->
+        <aside id="right-category-panel" class="glass-card">
+            <h3>Categories</h3>
+            <div class="category-tabs" id="category-tabs"><!-- populated dynamically --></div>
+        </aside>
+    </div>
+
+    <!-- Bias Analysis Modal -->
+    <div class="modal" id="bias-analysis-modal">
+        <div class="modal-content bias-modal-container">
+            <div class="modal-header">
+                <h2>AI Bias Analysis</h2>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="bias-analysis-loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing article for bias...</p>
+                </div>
+                
+                <div id="bias-analysis-content" class="hidden">
+                    <div class="bias-analysis-container">
+                        <!-- Original Article Section -->
+                        <div class="original-article">
+                            <h3>Original Article</h3>
+                            <div id="original-article-content">
+                                <!-- Article content will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <!-- AI Analysis Section -->
+                        <div class="ai-analysis">
+                            <h3>AI Bias Analysis</h3>
+                            <div id="ai-analysis-content">
+                                <!-- AI analysis will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript modules -->
+    <!-- jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Export functionality modules -->
+    <script src="js/file-generators.js"></script>
+    <script src="js/export-modal.js"></script>
+    
+    <!-- Removed deprecated config.js; base URL fallback lives inside individual scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui-utils.js"></script>
+    <script src="js/news.js?v=20250919.1"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Global Spinner Overlay -->
+    <div id="errorModal" class="modal-overlay" style="display: none;">
+        <div class="modal glass-card">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> Error</h3>
+                <button class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage" class="error-message-text">An error occurred.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="globalSpinner" class="global-spinner-overlay">
+        <div class="spinner-future"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,359 @@
+/* Enhanced Bias Analysis Styles */
+
+/* Bias Analysis Content - Remove Truncation */
+.bias-modal-container .analysis-section {
+    margin-bottom: 20px;
+}
+
+.bias-modal-container .analysis-section h4 {
+    margin-bottom: 12px;
+    color: var(--color-accent);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.bias-modal-container .analysis-section p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: var(--color-text-primary);
+}
+
+/* XAI Section Highlighting */
+.xai-highlight {
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.xai-explanation {
+    font-weight: 500;
+    color: var(--color-text-primary) !important;
+}
+
+.xai-note {
+    display: block;
+    margin-top: 8px;
+    font-style: italic;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+/* Analysis Header Styling */
+.analysis-header {
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: var(--backdrop-blur);
+}
+
+.bias-level-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.confidence-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(99, 102, 241, 0.15);
+    color: #6366f1;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.confidence-badge.high {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.confidence-badge.medium {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.confidence-badge.low {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Missing Context List Styling */
+.missing-context-list {
+    margin: 10px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.missing-context-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.missing-context-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+/* Additional bias level styles */
+.bias-level.neutral {
+    background: rgba(158, 158, 158, 0.2);
+    color: #9e9e9e;
+    border: 1px solid rgba(158, 158, 158, 0.3);
+}
+
+/* Category-specific palettes (modifier applied when modal has .category-*) */
+/* Sports: energetic greens/oranges */
+.category-sports .bias-level.low {
+    background: rgba(76, 175, 80, 0.15);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.category-sports .bias-level.neutral {
+    background: rgba(120, 144, 156, 0.2);
+    color: #90a4ae;
+    border: 1px solid rgba(120, 144, 156, 0.3);
+}
+
+.category-sports .bias-level.medium {
+    background: rgba(255, 152, 0, 0.2);
+    color: #ff9800;
+    border: 1px solid rgba(255, 152, 0, 0.35);
+}
+
+.category-sports .bias-level.high {
+    background: rgba(248, 113, 113, 0.2);
+    color: var(--color-accent-danger);
+    border: 1px solid rgba(248, 113, 113, 0.45);
+}
+
+/* Technology: cool blues/purples */
+.category-technology .bias-level.low {
+    background: rgba(33, 150, 243, 0.15);
+    color: #2196f3;
+    border: 1px solid rgba(33, 150, 243, 0.35);
+}
+
+.category-technology .bias-level.neutral {
+    background: rgba(158, 158, 158, 0.18);
+    color: #b0bec5;
+    border: 1px solid rgba(176, 190, 197, 0.3);
+}
+
+.category-technology .bias-level.medium {
+    background: rgba(156, 39, 176, 0.18);
+    color: #ab47bc;
+    border: 1px solid rgba(171, 71, 188, 0.35);
+}
+
+.category-technology .bias-level.high {
+    background: rgba(244, 67, 54, 0.22);
+    color: #ef5350;
+    border: 1px solid rgba(239, 83, 80, 0.4);
+}
+
+/* Business: professional teals/golds */
+.category-business .bias-level.low {
+    background: rgba(0, 150, 136, 0.18);
+    color: #009688;
+    border: 1px solid rgba(0, 150, 136, 0.4);
+}
+
+.category-business .bias-level.neutral {
+    background: rgba(120, 144, 156, 0.18);
+    color: #90a4ae;
+    border: 1px solid rgba(120, 144, 156, 0.3);
+}
+
+.category-business .bias-level.medium {
+    background: rgba(255, 193, 7, 0.25);
+    color: #ffb300;
+    border: 1px solid rgba(255, 193, 7, 0.4);
+}
+
+.category-business .bias-level.high {
+    background: rgba(183, 28, 28, 0.25);
+    color: #e53935;
+    border: 1px solid rgba(229, 57, 53, 0.45);
+}
+
+/* Default/General/Political: existing palette acts as fallback */
+
+.bias-level.medium {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+/* Quick Summary Section */
+.quick-summary {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 69, 19, 0.15) 100%);
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.bias-overview p {
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Detailed Analysis Section */
+.detailed-analysis {
+    background: rgba(26, 26, 46, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.detailed-analysis h4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.detailed-analysis h4:hover {
+    background: rgba(99, 102, 241, 0.2);
+}
+
+#toggle-arrow {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+/* Detail Subsections */
+.detail-subsection {
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-primary);
+}
+
+.detail-subsection p {
+    margin: 8px 0;
+    color: var(--text-primary);
+}
+
+.detail-subsection ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.detail-subsection li {
+    margin: 5px 0;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.detail-subsection strong {
+    color: var(--accent-primary);
+}
+
+/* Smooth transitions for expand/collapse */
+#detailed-content {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Voice Selection Styles */
+.tts-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.voice-select {
+    padding: 8px 12px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 8px;
+    background: rgba(26, 26, 46, 0.8);
+    color: var(--text-primary);
+    font-size: 12px;
+    min-width: 140px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.voice-select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
+
+.voice-select option {
+    background: rgba(26, 26, 46, 0.95);
+    color: var(--text-primary);
+    padding: 8px;
+}
+
+/* Source loading state */
+.source-loading {
+    padding: 12px 16px;
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    background: var(--glass-bg);
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .tts-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+
+    .voice-select {
+        width: 100%;
+        min-width: unset;
+        font-size: 11px;
+    }
+
+    /* Ensure bias analysis content is readable on mobile */
+    .bias-modal-container .analysis-section {
+        margin-bottom: 16px;
+        padding: 12px;
+    }
+
+    .bias-modal-container .analysis-section h4 {
+        font-size: 0.9rem;
+    }
+
+    .bias-modal-container .analysis-section p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .xai-highlight {
+        padding: 12px;
+        margin: 12px 0;
+    }
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Dashboard - The Crux</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/bias-analysis.css">
+    <link rel="stylesheet" href="css/bookmark-styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .debug-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px;
+            max-width: 300px;
+            z-index: 1000;
+            backdrop-filter: var(--backdrop-blur);
+        }
+        .debug-panel h4 {
+            margin: 0 0 10px 0;
+            color: var(--accent-primary);
+        }
+        .debug-panel button {
+            margin: 5px 0;
+            width: 100%;
+        }
+        .status {
+            padding: 5px;
+            border-radius: 4px;
+            margin: 2px 0;
+            font-size: 12px;
+        }
+        .status.ok { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .status.error { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .status.warning { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+    </style>
+</head>
+<body>
+    <!-- Debug Panel -->
+    <div class="debug-panel">
+        <h4>Debug Panel</h4>
+        <div id="debug-status"></div>
+        <button class="btn btn-sm" onclick="testArticleRendering()">Test Article Rendering</button>
+        <button class="btn btn-sm" onclick="testSourceFiltering()">Test Source Filtering</button>
+        <button class="btn btn-sm" onclick="testCategoryTabs()">Test Category Tabs</button>
+        <button class="btn btn-sm" onclick="enableTestMode()">Enable Test Mode</button>
+        <button class="btn btn-sm" onclick="checkModules()">Check Modules</button>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar for Source Filtering -->
+        <aside class="sources-sidebar glass-card">
+            <div class="sidebar-header">
+                <h3>News Sources</h3>
+                <input type="text" id="source-search" placeholder="Search sources..." class="source-search-input">
+            </div>
+            <ul id="sources-list" class="sources-list">
+                <!-- Sources will be populated dynamically -->
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div id="alert-container"></div>
+            
+            <div id="loading-indicator" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Loading articles...</p>
+            </div>
+
+            <div class="articles-grid" id="articles-container">
+                <!-- Articles will be dynamically inserted here -->
+            </div>
+        </main>
+        
+        <!-- Right Category Panel -->
+        <aside id="right-category-panel" class="glass-card">
+            <h3>Categories</h3>
+            <div class="category-tabs" id="category-tabs">
+                <!-- populated dynamically -->
+            </div>
+        </aside>
+    </div>
+
+    <!-- Load JavaScript modules -->
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/test-mode.js"></script>
+    <script src="js/news-rendering.js"></script>
+    <script src="js/news-categories.js"></script>
+    <script src="js/news-search.js"></script>
+    <script src="js/news-infinite-scroll.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/news-main.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Debug functions
+        function updateDebugStatus(message, type = 'ok') {
+            const statusDiv = document.getElementById('debug-status');
+            const statusElement = document.createElement('div');
+            statusElement.className = `status ${type}`;
+            statusElement.textContent = message;
+            statusDiv.appendChild(statusElement);
+            
+            // Keep only last 10 messages
+            while (statusDiv.children.length > 10) {
+                statusDiv.removeChild(statusDiv.firstChild);
+            }
+        }
+
+        function testArticleRendering() {
+            updateDebugStatus('Testing article rendering...', 'warning');
+            
+            if (!window.renderingUtils) {
+                updateDebugStatus('renderingUtils not available', 'error');
+                return;
+            }
+            
+            const testArticle = {
+                id: 'test1',
+                title: 'Test Article Title',
+                summary: 'This is a test article summary to verify rendering.',
+                source: 'Test Source',
+                publishDate: new Date().toISOString(),
+                imageUrl: 'https://via.placeholder.com/800x400/1e3a8a/ffffff?text=Test+Image',
+                url: 'https://example.com',
+                tags: ['Test', 'Debug']
+            };
+            
+            try {
+                window.renderingUtils.renderArticles([testArticle]);
+                updateDebugStatus('Article rendering successful', 'ok');
+            } catch (error) {
+                updateDebugStatus(`Article rendering failed: ${error.message}`, 'error');
+            }
+        }
+
+        function testSourceFiltering() {
+            updateDebugStatus('Testing source filtering...', 'warning');
+            
+            if (!window.categoryUtils) {
+                updateDebugStatus('categoryUtils not available', 'error');
+                return;
+            }
+            
+            try {
+                window.categoryUtils.handleSourceFilter('Test Source');
+                updateDebugStatus('Source filtering initiated', 'ok');
+            } catch (error) {
+                updateDebugStatus(`Source filtering failed: ${error.message}`, 'error');
+            }
+        }
+
+        function testCategoryTabs() {
+            updateDebugStatus('Testing category tabs...', 'warning');
+            
+            if (!window.categoryUtils) {
+                updateDebugStatus('categoryUtils not available', 'error');
+                return;
+            }
+            
+            try {
+                window.categoryUtils.buildCategoryTabs(['Technology', 'Science'], 'Developer');
+                updateDebugStatus('Category tabs built', 'ok');
+            } catch (error) {
+                updateDebugStatus(`Category tabs failed: ${error.message}`, 'error');
+            }
+        }
+
+        function enableTestMode() {
+            updateDebugStatus('Enabling test mode...', 'warning');
+            
+            if (!window.testMode) {
+                updateDebugStatus('testMode not available', 'error');
+                return;
+            }
+            
+            try {
+                window.testMode.enable();
+                updateDebugStatus('Test mode enabled', 'ok');
+            } catch (error) {
+                updateDebugStatus(`Test mode failed: ${error.message}`, 'error');
+            }
+        }
+
+        function checkModules() {
+            updateDebugStatus('Checking modules...', 'warning');
+            
+            const modules = [
+                'renderingUtils',
+                'categoryUtils', 
+                'searchUtils',
+                'infiniteScrollUtils',
+                'newsUtils',
+                'authUtils',
+                'testMode'
+            ];
+            
+            modules.forEach(module => {
+                if (window[module]) {
+                    updateDebugStatus(`${module}: OK`, 'ok');
+                } else {
+                    updateDebugStatus(`${module}: MISSING`, 'error');
+                }
+            });
+        }
+
+        // Auto-check modules on load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                updateDebugStatus('Debug page loaded', 'ok');
+                checkModules();
+            }, 1000);
+        });
+
+        // Mock functions to prevent errors
+        function toggleBookmark() { updateDebugStatus('Bookmark clicked', 'ok'); }
+        function shareArticle() { updateDebugStatus('Share clicked', 'ok'); }
+        function filterByTag() { updateDebugStatus('Tag clicked', 'ok'); }
+        function openBiasAnalysis() { updateDebugStatus('Bias analysis clicked', 'ok'); }
+        function toggleTextToSpeech() { updateDebugStatus('TTS clicked', 'ok'); }
+    </script>
+</body>
+</html>

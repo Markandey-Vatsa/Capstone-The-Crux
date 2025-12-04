@@ -1,0 +1,299 @@
+/* Reading List View Specific Styles */
+
+.app-container {
+    min-height: 100vh;
+    background: var(--bg-primary);
+}
+
+/* Reading List Header */
+.reading-list-header {
+    margin: 0;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.reading-list-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reading-list-header .header-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.list-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.list-title i {
+    color: var(--accent-color);
+}
+
+.list-stats {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.close-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+}
+
+/* Main Content */
+.main-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reading-list-content {
+    width: 100%;
+}
+
+/* Articles Grid - Reusing dashboard styles */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Article Card Modifications for Reading List */
+.article-card {
+    position: relative;
+}
+
+.article-card .remove-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.article-card .remove-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Article Reorder Controls */
+.article-reorder-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+.move-up-btn,
+.move-down-btn {
+    width: 2rem;
+    height: 1.75rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.move-up-btn:hover:not(:disabled),
+.move-down-btn:hover:not(:disabled) {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: #3b82f6;
+    transform: translateY(-1px);
+}
+
+.move-up-btn:disabled,
+.move-down-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.move-up-btn i,
+.move-down-btn i {
+    font-size: 0.75rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty-state .empty-icon {
+    font-size: 4rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.empty-state h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    margin: 0 0 2rem 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Modal Styles */
+.info-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0.5rem 0;
+}
+
+/* Loading States */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.loading-spinner {
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.loading-spinner .spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .reading-list-header .header-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .header-actions {
+        margin-left: 0;
+        justify-content: center;
+    }
+    
+    .list-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .list-stats {
+        text-align: center;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .empty-state {
+        padding: 2rem 1rem;
+    }
+    
+    .empty-state .empty-icon {
+        font-size: 3rem;
+    }
+    
+    .empty-state h3 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reading-list-header .header-content {
+        padding: 0.75rem;
+    }
+    
+    .list-title {
+        font-size: 1.25rem;
+        gap: 0.5rem;
+    }
+    
+    .close-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .article-card .article-actions {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .article-reorder-controls {
+        order: -1;
+        flex-direction: row;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .move-up-btn,
+    .move-down-btn {
+        width: 2.5rem;
+        height: 2rem;
+    }
+    
+    .article-card .btn-small {
+        flex: 1;
+        min-width: calc(50% - 0.25rem);
+    }
+}

@@ -1,0 +1,51 @@
+/* Bookmark Functionality Styles */
+.bookmark-btn.bookmarked {
+    background: var(--accent-primary) !important;
+    color: white !important;
+}
+
+.bookmark-btn.bookmarked i {
+    color: white !important;
+}
+
+/* Bookmark Toast Notifications */
+.bookmark-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.bookmark-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.bookmark-toast.error {
+    border-color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.bookmark-toast.error i {
+    color: #ff4757;
+}
+
+.bookmark-toast i {
+    color: var(--accent-primary);
+    font-size: 16px;
+}

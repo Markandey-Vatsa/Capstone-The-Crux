@@ -1,0 +1,24 @@
+The Gaurdian
+API key - e94c8fbd-1def-4606-9c3a-df8180934eeb
+per day - 500 requests
+
+newsapi.org - 
+API KEY - 60559acf3eaf4b39813b924964a04d5a  
+requests- 1000 request ( so use only 800- 900 within Limit)
+
+currentsapi.services 
+API key - SaPs7bUE1wDidTmrHYKXynX264_lzcf5OTSv9VxlieUXDAH7
+per day - 20 requests
+In a month - 600 requests
+
+Gnews.io
+API KEY - bd02782708a95ee1941dbbee5017dabb
+per day - 100 requests  --  
+
+Mediastack.com 
+API KEY - 7d991a406198e19ce26ccfd8b3b14a77
+per month only - 100 requests
+
+Newsdata.io 
+API KEY - pub_c3563ea6520b4f2e9eb859323b127232
+per day - 200 Request

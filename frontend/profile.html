@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - The Crux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css?v=20250919.1">
+    <link rel="stylesheet" href="css/modals.css?v=20250919">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/profile-bookmarks.css?v=20250919">
+    <link rel="stylesheet" href="css/style.css?v=20250919">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Bar -->
+        <header class="nav-header">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h1>The Crux</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>News</span>
+                    </a>
+                    <a href="profile.html" class="nav-link active">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="bookmarks.html" class="nav-link">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Bookmarks</span>
+                    </a>
+                    <a href="reading-lists.html" class="nav-link">
+                        <i class="fas fa-list"></i>
+                        <span>Reading Lists</span>
+                    </a>
+                    <button id="logoutBtn" class="nav-link logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="profile-container">
+                <!-- Profile Header -->
+                <div class="profile-header glass-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profileUsername" class="profile-username">Loading...</h2>
+                        <p id="profileEmail" class="profile-email">Loading...</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="bookmarkCount">0</span>
+                                <span class="stat-label">Bookmarks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Actions -->
+                <div class="profile-actions glass-card">
+                    <h3>Quick Actions</h3>
+                    <div class="action-grid">
+                        <a href="bookmarks.html" class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <div class="action-info">
+                                <h4>View Bookmarks</h4>
+                                <p>See all your saved articles</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                        
+                        <a href="reading-lists.html" class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-list"></i>
+                            </div>
+                            <div class="action-info">
+                                <h4>Reading Lists</h4>
+                                <p>Organize articles by topics</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                        
+                        <a href="index.html" class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="action-info">
+                                <h4>Browse News</h4>
+                                <p>Discover latest articles</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Account Settings -->
+                <div class="account-settings glass-card">
+                    <h3>Account Information</h3>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Username</h4>
+                                <p id="settingsUsername">Loading...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Email</h4>
+                                <p id="settingsEmail">Loading...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Member Since</h4>
+                                <p id="memberSince">--</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preferences with Tabs -->
+                <div class="account-settings glass-card" id="preferences-section">
+                    <h3>Preferences</h3>
+                    
+                    <!-- Profile Tabs -->
+                    <div class="profile-tabs">
+                        <button class="profile-tab active" onclick="switchTab('interests')">
+                            <i class="fas fa-heart"></i> My Interests
+                        </button>
+                        <button class="profile-tab" onclick="switchTab('settings')">
+                            <i class="fas fa-cog"></i> App Settings
+                        </button>
+                    </div>
+                    
+                    <!-- Interests Tab -->
+                    <div id="interests-tab" class="tab-content active">
+                        <p style="margin-bottom:20px;font-size:14px;opacity:0.85;">Select categories you're interested in. Your feed will prioritize these topics.</p>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info" style="width:100%">
+                                <h4>Profession</h4>
+                                <div id="profession-buttons" class="pref-button-group" style="background:rgba(255,255,255,0.03);padding:14px 12px;border:1px solid rgba(255,255,255,0.07);border-radius:14px;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info" style="width:100%">
+                                <h4>News Categories</h4>
+                                <div class="selection-summary" id="selection-summary" style="display: none; margin-bottom: 16px;">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span class="count">0</span> categories selected
+                                </div>
+                                <div id="interest-buttons">
+                                    <!-- Accordion items will be inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Settings Tab -->
+                    <div id="settings-tab" class="tab-content">
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Preferred TTS Voice</h4>
+                                    <p>Select the voice used for article narration.</p>
+                                </div>
+                                <div class="setting-action" style="min-width:260px;">
+                                    <select id="voice-select" class="form-control" style="width:100%;padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.15);">
+                                        <option value="">Loading voices...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Current Selection</h4>
+                                    <p id="voice-selected-label">Not set</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading profile...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui-utils.js"></script>
+    <script src="js/profile.js"></script>
+
+    <!-- Global Spinner Overlay -->
+    <div id="globalSpinner" class="global-spinner-overlay">
+        <div class="spinner-future"></div>
+    </div>
+</body>
+</html>

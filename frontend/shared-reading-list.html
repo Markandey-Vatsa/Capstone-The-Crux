@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared Reading List - The Crux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <!-- Modular CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css?v=20250919.1">
+    <link rel="stylesheet" href="css/modals.css?v=20250919">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/reading-list-view.css">
+    <link rel="stylesheet" href="css/shared-list.css">
+    <!-- Global overrides -->
+    <link rel="stylesheet" href="css/style.css?v=20250919">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Shared Reading List Header -->
+        <header class="shared-list-header glass-card">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1 id="listTitle" class="list-title">
+                        <i class="fas fa-list"></i>
+                        <span id="listName">Loading...</span>
+                    </h1>
+                    <p class="attribution">
+                        Shared by <span id="ownerName" class="owner-name">...</span>
+                        <span id="sharedDate" class="shared-date"></span>
+                    </p>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-secondary">
+                        <i class="fas fa-home"></i>
+                        Browse News
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="shared-list-content">
+                <!-- Articles Grid (reusing dashboard styles) -->
+                <div id="articlesContainer" class="articles-grid">
+                    <!-- Articles will be loaded here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state glass-card" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>No Articles in This List</h3>
+                    <p>This reading list doesn't have any articles yet</p>
+                </div>
+
+                <!-- Private/Error State -->
+                <div id="privateState" class="private-state glass-card" style="display: none;">
+                    <div class="private-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Reading List Not Available</h3>
+                    <p>This reading list is private or no longer available.</p>
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i>
+                        Browse News
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading shared reading list...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/shared-reading-list.js"></script>
+
+    <!-- Global Spinner Overlay -->
+    <div id="globalSpinner" class="global-spinner-overlay">
+        <div class="spinner-future"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Lists - The Crux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <!-- Modular CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css?v=20250919.1">
+    <link rel="stylesheet" href="css/modals.css?v=20250919">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/profile-bookmarks.css?v=20250919">
+    <link rel="stylesheet" href="css/reading-lists.css">
+    <!-- Global overrides -->
+    <link rel="stylesheet" href="css/style.css?v=20250919">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Bar -->
+        <header class="nav-header">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h1>The Crux</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>News</span>
+                    </a>
+                    <a href="profile.html" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="bookmarks.html" class="nav-link">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Bookmarks</span>
+                    </a>
+                    <a href="reading-lists.html" class="nav-link active">
+                        <i class="fas fa-list"></i>
+                        <span>Reading Lists</span>
+                    </a>
+                    <button id="logoutBtn" class="nav-link logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="reading-lists-container">
+                <!-- Reading Lists Header -->
+                <div class="reading-lists-header glass-card">
+                    <div class="header-content">
+                        <div class="header-info">
+                            <h2><i class="fas fa-list"></i> My Reading Lists</h2>
+                            <p id="listsStats">Loading reading lists...</p>
+                        </div>
+                        <div class="header-actions">
+                            <button id="createListBtn" class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                Create New List
+                            </button>
+                            <button id="refreshBtn" class="btn btn-secondary">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reading Lists Grid -->
+                <div class="reading-lists-content">
+                    <div id="readingListsGrid" class="reading-lists-grid">
+                        <!-- Reading lists will be loaded here -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="empty-state glass-card" style="display: none;">
+                        <div class="empty-icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <h3>No Reading Lists Yet</h3>
+                        <p>Create your first reading list to organize articles by topics</p>
+                        <button id="createFirstListBtn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Create Your First List
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading reading lists...</p>
+            </div>
+        </div>
+
+        <!-- Create/Edit Reading List Modal -->
+        <div id="listModal" class="modal-overlay" style="display: none;">
+            <div class="modal glass-card">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Create New Reading List</h3>
+                    <button class="close-btn" onclick="closeListModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="listForm">
+                        <div class="form-group">
+                            <label for="listName">List Name</label>
+                            <input type="text" id="listName" name="name" class="form-control" 
+                                   placeholder="Enter list name (e.g., US War, Movies)" required maxlength="100">
+                            <div id="nameError" class="error-message" style="display: none;"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="colorTheme">Color Theme</label>
+                            <div class="color-picker" id="colorPicker">
+                                <div class="color-option active" data-color="#3b82f6" style="background-color: #3b82f6;" title="Blue"></div>
+                                <div class="color-option" data-color="#10b981" style="background-color: #10b981;" title="Green"></div>
+                                <div class="color-option" data-color="#8b5cf6" style="background-color: #8b5cf6;" title="Purple"></div>
+                                <div class="color-option" data-color="#ef4444" style="background-color: #ef4444;" title="Red"></div>
+                                <div class="color-option" data-color="#f59e0b" style="background-color: #f59e0b;" title="Orange"></div>
+                                <div class="color-option" data-color="#ec4899" style="background-color: #ec4899;" title="Pink"></div>
+                                <div class="color-option" data-color="#6366f1" style="background-color: #6366f1;" title="Indigo"></div>
+                                <div class="color-option" data-color="#14b8a6" style="background-color: #14b8a6;" title="Teal"></div>
+                            </div>
+                            <input type="hidden" id="selectedColor" name="colorTheme" value="#3b82f6">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeListModal()">Cancel</button>
+                    <button type="submit" form="listForm" id="saveListBtn" class="btn btn-primary">Create List</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteModal" class="modal-overlay" style="display: none;">
+            <div class="modal glass-card">
+                <div class="modal-header">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Delete Reading List</h3>
+                    <button class="close-btn" onclick="closeDeleteModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete "<span id="deleteListName"></span>"?</p>
+                    <p class="warning-text">This action cannot be undone. All articles in this list will be removed from the list.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                    <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete List</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui-utils.js"></script>
+    <script src="js/reading-lists.js"></script>
+
+    <!-- Global Spinner Overlay -->
+    <div id="globalSpinner" class="global-spinner-overlay">
+        <div class="spinner-future"></div>
+    </div>
+</body>
+</html>

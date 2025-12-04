@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Articles - The Crux</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/articles.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/bias-analysis.css">
+    <link rel="stylesheet" href="css/bookmark-styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <main class="main-content">
+            <h2>Test Article Layout</h2>
+            <div class="articles-grid" id="test-articles">
+                <!-- Test articles will be inserted here -->
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background: var(--glass-bg); border-radius: 12px;">
+                <h3>Layout Comparison</h3>
+                <p>The articles above should now have:</p>
+                <ul>
+                    <li>✅ Larger image areas (300px height)</li>
+                    <li>✅ Bigger, bolder titles</li>
+                    <li>✅ Better spaced content</li>
+                    <li>✅ Properly aligned buttons</li>
+                    <li>✅ Enhanced hover effects</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/news-rendering.js"></script>
+    <script>
+        // Test data
+        const testArticles = [
+            {
+                id: 'test1',
+                title: 'This Everyday Vitamin Could Be The Closest Thing We Have To An "Anti-Aging Pill"',
+                summary: 'A study found that daily vitamin D supplements helped slow telomere shortening—the cellular process linked to aging and disease. Researchers believe its anti-inflammatory effects may protect DNA. While promising, more research is needed to confirm these findings.',
+                source: 'ScienceDaily Health',
+                publishDate: new Date(Date.now() - 3600000).toISOString(), // 1 hour ago
+                imageUrl: 'https://via.placeholder.com/800x400/1e3a8a/ffffff?text=Science+News',
+                url: 'https://example.com/article1',
+                tags: ['Health', 'Science', 'Research', 'Aging']
+            },
+            {
+                id: 'test2',
+                title: 'Life360 Ventures Into Pet Tech With The Launch Of A New GPS Tracker',
+                summary: 'Family location safety app Life360 is venturing into pet tech with the launch of a new tracking device for cats and dogs. The device offers real-time location tracking, activity monitoring, and health insights for pet owners.',
+                source: 'TechCrunch',
+                publishDate: new Date(Date.now() - 7200000).toISOString(), // 2 hours ago
+                imageUrl: 'https://via.placeholder.com/800x400/059669/ffffff?text=Tech+News',
+                url: 'https://example.com/article2',
+                tags: ['Technology', 'Pets', 'GPS', 'Startup']
+            },
+            {
+                id: 'test3',
+                title: 'One Streaming Quest To Score Electricity In This Social',
+                summary: 'Exploring the intersection of streaming technology and sustainable energy solutions. How content creators are finding innovative ways to power their operations while maintaining their digital presence.',
+                source: 'TechCrunch',
+                publishDate: new Date(Date.now() - 10800000).toISOString(), // 3 hours ago
+                imageUrl: null, // Test placeholder
+                url: 'https://example.com/article3',
+                tags: ['Streaming', 'Energy', 'Technology', 'Sustainability']
+            }
+        ];
+
+        // Render test articles
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.renderingUtils) {
+                window.renderingUtils.renderArticles(testArticles);
+            } else {
+                // Fallback if renderingUtils not available
+                const container = document.getElementById('test-articles');
+                testArticles.forEach(article => {
+                    const card = document.createElement('div');
+                    card.className = 'article-card';
+                    card.innerHTML = `
+                        <div class="article-media">
+                            ${article.imageUrl ? `
+                                <img src="${article.imageUrl}" alt="${article.title}" class="article-image">
+                            ` : `
+                                <div class="article-image-placeholder">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                            `}
+                        </div>
+                        <div class="article-content-wrapper">
+                            <div class="article-meta">
+                                <span class="article-source">${article.source}</span>
+                                <span class="article-time">Test Time</span>
+                            </div>
+                            <h3 class="article-title">
+                                <a href="${article.url}" target="_blank">${article.title}</a>
+                            </h3>
+                            <div class="article-summary">${article.summary}</div>
+                            <div class="article-tags">
+                                ${article.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="article-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-balance-scale"></i> Bias Analysis
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-volume-up"></i> Listen
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Read Full
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        });
+
+        // Mock functions to prevent errors
+        function toggleBookmark() { console.log('Bookmark clicked'); }
+        function shareArticle() { console.log('Share clicked'); }
+        function filterByTag() { console.log('Tag clicked'); }
+        function openBiasAnalysis() { console.log('Bias analysis clicked'); }
+        function toggleTextToSpeech() { console.log('TTS clicked'); }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+{
+"status": "ok",
+"totalResults": 8473,
+-"articles": [
+-{
+-"source": {
+"id": null,
+"name": "Gizmodo.com"
+},
+"author": "Lucas Ropek",
+"title": "Under Trump, ‘Bitcoin Jesus’ May Be Redeemed",
+"description": "A new report claims that Roger Ver may have reached a deal with the government.",
+"url": "https://gizmodo.com/under-trump-bitcoin-jesus-may-be-redeemed-2000670784",
+"urlToImage": "https://gizmodo.com/app/uploads/2025/10/Roger-Ver-1200x675.jpg",
+"publishedAt": "2025-10-10T13:50:09Z",
+"content": "Ever since the crypto industry helped bankroll his presidential campaign last year, Trump and the HODLers have been on pretty good terms. The Trump family is busy launching its own crypto ventures wh… [+2568 chars]"
+},
+-{
+-"source": {
+"id": null,
+"name": "Gizmodo.com"
+},
+"author": "Bruce Gil",
+"title": "Dogecoin Has Made It to Wall Street",
+"description": "The first memecoin ETFs have hit the stock market, legitimizing the once too-online digital currency.",
+"url": "https://gizmodo.com/dogecoin-has-made-it-to-wall-street-2000663698",
+"urlToImage": "https://gizmodo.com/app/uploads/2023/06/4b1fc4c2df74bfac346230a21592d2ef.jpg",
+"publishedAt": "2025-09-25T15:40:25Z",
+"content": "Are meme coins a legitimate investment now? Well, Wall Street seems to think so. Last week, REX Financial and Osprey Funds launched the first Dogecoin exchange-traded fund (ETF).\r\nBasically, an ETF i… [+3310 chars]"
+},
+-{
+-"source": {
+"id": null,
+"name": "Gizmodo.com"
+},
+"author": "Bruce Gil",
+"title": "Feds Scrutinizing Potential Insider Trading in Major Crypto Deals",
+"description": "Wall Street regulators are reportedly flagging suspicious trading in the stocks of companies that have announced big crypto bets.",
+"url": "https://gizmodo.com/feds-scrutinizing-potential-insider-trading-in-major-crypto-deals-2000664439",
+"urlToImage": "https://gizmodo.com/app/uploads/2024/09/An-image-of-Bitcoin-cryptocurrency.jpg",
+"publishedAt": "2025-09-27T13:00:35Z",
+"content": "Federal regulators are scrutinizing a growing number of companies that have embraced so-called crypto-treasury strategies this year, after unusual trading patterns in their shares caught their attent… [+2741 chars]"
+},
+-{
+-"source": {
+"id": null,
+"name": "Dlnews.com"
+},
+"author": "Pedro Solimano",
+"title": "Why Bitcoin whales sold $16bn: ‘It’s not a good signal for the market’",
+"description": "Large holders, or whales, have sold 147,000 Bitcoin since August. That translates to over $16 billion. \"It's not a good signal for the market,\" said...",
+"url": "https://www.dlnews.com/articles/markets/bitcoin-whales-sell-16bn-in-troubling-signal-expert-says/",
+"urlToImage": "https://s.yimg.com/ny/api/res/1.2/mglEu3Qa17iQxDxTrlggMw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03ODU-/https://media.zenfs.com/en/dlnews_702/59bde3be67e7abb47acdf95359a7f5a7",
+"publishedAt": "2025-09-24T20:37:41Z",
+"content": "Things dont bode well for Bitcoin.\r\nOver the past month, Bitcoin whales, the term for entities that hold upwards of 1,000 Bitcoin, have sold over $16 billion worth of coins. The selling is happening … [+2439 chars]"
+},
+-{
+-"source": {
+"id": null,
+"name": "BeInCrypto"
+},
+"author": "Landon Manning",
+"title": "$100 Million Lost in One Hour: Bitcoin Drops Spark Rampaging Liquidations",
+"description": "Retail traders drive $700 million Bitcoin liquidations as BTC falls quickly despite strong institutional buying and ETF inflows.",
+"url": "https://beincrypto.com/bitcoin-liquidation-retail-impact/",
+"urlToImage": "https://s.yimg.com/ny/api/res/1.2/Ihep7vKwErjJvUZZLRUOeQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://media.zenfs.com/en/beincrypto_us_662/71f755f833df64f1914c94d14f1cd9aa",
+"publishedAt": "2025-10-09T18:40:25Z",
+"content": "Bitcoin price analysis. Photo by BeInCrypto\r\nRetail Bitcoin traders made themselves heard today, causing $700 million in crypto liquidations. The price of BTC fell by around $4,000 as on-chain activi… [+2360 chars]"
+},
+-{
+-"source": {
+"id": null,
+"name": "Yahoo Entertainment"
+},
+"author": "Yahoo Finance Video",
+"title": "Bitcoin has more room to run in October: A closer look",
+"description": "Bitcoin (BTC-USD) rises to kick off October — historically the cryptocurrency's strongest month. Yahoo Finance Senior Reporter Ines Ferré outlines some...",
+"url": "https://finance.yahoo.com/video/bitcoin-more-room-run-october-203130946.html",
+"urlToImage": "https://s.yimg.com/ny/api/res/1.2/miuApA7UCv4GhMB87earzA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzY-/https://s.yimg.com/os/creatr-uploaded-images/2025-10/47aced40-9fce-11f0-b7eb-96196b9806be",
+"publishedAt": "2025-10-02T20:31:30Z",
+"content": "All right, Bitcoin peaking back above $120,000 on Thursday \r\nand there may be more gas in the tank. October is traditionally a strong month for the cryptocurrency and as Fray joins us now to discuss … [+1450 chars]"
+},

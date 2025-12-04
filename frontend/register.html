@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - The Crux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon - Prism Shard Design -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <!-- Modular CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+    <div class="auth-container glass-card">
+        <h1>Create Account</h1>
+        
+        <!-- Alert container for messages -->
+        <div id="alert-container"></div>
+        
+        <!-- Registration form -->
+        <form id="register-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control glass-card" required 
+                       minlength="3" maxlength="20" placeholder="Enter your username">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control glass-card" required 
+                       placeholder="Enter your email address">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control glass-card" required 
+                       minlength="6" placeholder="Enter your password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary glass-card" style="width: 100%; margin-bottom: 15px;">
+                Create Account
+            </button>
+        </form>
+        
+        <p class="text-center">
+            Already have an account? 
+            <a href="login.html" style="color: var(--accent-primary); text-decoration: none;">Sign In</a>
+        </p>
+    </div>
+    
+    <!-- Load authentication JavaScript -->
+    <script src="js/theme.js"></script>
+    <script src="js/ui-utils.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

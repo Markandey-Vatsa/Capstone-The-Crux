@@ -1,0 +1,103 @@
+/* Single Futuristic Night Theme */
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* Base (Light Mode) */
+/* Single Futuristic Night Theme (no light mode) */
+:root {
+    --color-bg: #10151C;          /* Desaturated charcoal-navy mix */
+    --color-bg-alt: #171E27;      /* Slight elevation */
+    --color-surface: #1D252F;     /* Panels */
+    --color-surface-alt: #232C37; /* Alt panels */
+    --color-border: rgba(255,255,255,0.08);
+    --color-border-strong: rgba(255,255,255,0.16);
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #F1F5F9;
+    --color-text-muted: #C7D1DC;
+    --color-accent: #3B82F6;      /* Electric blue accent */
+    --color-accent-alt: #2563EB;  /* Hover accent */
+    --color-accent-focus-ring: rgba(59,130,246,0.55);
+    --color-accent-danger: #F87171;
+    --color-accent-warn: #F59E0B;
+    --color-accent-positive: #34D399;
+
+    /* Glass & Frost */
+    --glass-bg: rgba(255,255,255,0.04);
+    --glass-bg-alt: rgba(255,255,255,0.03);
+    --glass-header-bg: linear-gradient(90deg, rgba(16,21,28,0.65), rgba(59,130,246,0.25));
+    --glass-border: rgba(255,255,255,0.08);
+    --glass-border-strong: rgba(255,255,255,0.18);
+    --glass-glow: 0 6px 28px -10px rgba(59,130,246,0.4);
+
+    /* Elevation */
+    --shadow-sm: 0 2px 4px -2px rgba(0,0,0,0.55), 0 1px 3px -1px rgba(0,0,0,0.45);
+    --shadow: 0 10px 34px -14px rgba(0,0,0,0.6), 0 6px 18px -8px rgba(0,0,0,0.5);
+    --shadow-hover: 0 20px 50px -18px rgba(0,0,0,0.65), 0 10px 30px -14px rgba(0,0,0,0.55);
+
+    /* Chips */
+    --chip-bg: rgba(255,255,255,0.05);
+    --chip-border: rgba(255,255,255,0.14);
+    --chip-text: #E2E8F0;
+    --chip-bg-hover: rgba(59,130,246,0.18);
+    --chip-active-bg: var(--color-accent);
+    --chip-active-text: #FFFFFF;
+    --chip-active-border: var(--color-accent);
+
+    --backdrop-blur: blur(14px);
+    --transition-smooth: all .25s cubic-bezier(.4,0,.2,1);
+    --transition-glow: all .3s ease;
+
+    /* Legacy mapping */
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-muted: var(--color-text-muted);
+    --accent-primary: var(--color-accent);
+    --accent-hover: var(--color-accent-alt);
+    --accent-glow: rgba(59,130,246,0.55);
+
+    /* Accessibility Focus Rings */
+    --focus-ring: 0 0 0 3px rgba(255,255,255,0.25),0 0 0 5px var(--color-accent-focus-ring);
+    --focus-ring-subtle: 0 0 0 2px rgba(255,255,255,0.18);
+
+    /* Futuristic Neon Edge */
+    --neon-edge: 0 0 0 1px rgba(255,255,255,0.08), 0 0 8px -2px rgba(59,130,246,0.55), 0 0 22px -6px rgba(99,102,241,0.45);
+    --neon-edge-strong: 0 0 0 1px rgba(255,255,255,0.16), 0 0 12px -2px rgba(59,130,246,0.8), 0 0 28px -4px rgba(99,102,241,0.65);
+
+    /* Typography */
+    --font-headline: 'Oswald', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    /* Button System Tokens */
+    --btn-radius-sm: 8px;
+    --btn-radius-md: 14px;
+    --btn-radius-lg: 20px;
+    --btn-padding-xs: 4px 10px;
+    --btn-padding-sm: 6px 14px;
+    --btn-padding-md: 10px 20px;
+    --btn-padding-lg: 14px 26px;
+    --btn-font-xs: .675rem;
+    --btn-font-sm: .775rem;
+    --btn-font-md: .95rem;
+    --btn-font-lg: 1.05rem;
+    --btn-bg-ghost: transparent;
+    --btn-bg-subtle: rgba(255,255,255,0.05);
+    --btn-bg-subtle-hover: rgba(255,255,255,0.09);
+    --btn-bg-outline: rgba(255,255,255,0.03);
+    --btn-border-outline: rgba(255,255,255,0.15);
+    --btn-danger: #dc2626;
+    --btn-danger-hover: #ef4444;
+    --btn-success: #059669;
+    --btn-success-hover: #10b981;
+    --btn-warning: #d97706;
+    --btn-warning-hover: #f59e0b;
+    --btn-ripple-color: rgba(255,255,255,0.35);
+}
+
+/* Single theme - no mode switching */
+
+body {font-family:var(--font-body);background:radial-gradient(circle at 20% 20%,#18202A,#10151C 60%) fixed;color:var(--color-text-primary);min-height:100vh;line-height:1.6;font-weight:400;transition:background-color .6s ease,color .4s ease,box-shadow .4s ease;}
+
+/* Theme transition overlay (created dynamically) */
+.theme-fade-overlay { position:fixed; inset:0; pointer-events:none; opacity:1; z-index:9999; transition:opacity .65s ease; background:var(--color-bg); }
+.theme-fade-overlay.fade-out { opacity:0; }

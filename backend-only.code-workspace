@@ -1,0 +1,21 @@
+{
+  "folders": [
+    { "path": "backend" }
+  ],
+  "settings": {
+    "files.watcherExclude": { "**/target/**": true, "**/.git/**": true },
+    "search.exclude": { "**/target": true, "**/.git": true },
+    "java.jdt.ls.vmargs": "-Xms128m -Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseStringDeduplication",
+    "spring-boot.ls.java.vmargs": "-Xms128m -Xmx512m",
+    "java.referencesCodeLens.enabled": false,
+    "java.implementationsCodeLens.enabled": false,
+    "editor.semanticHighlighting.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.codeLens": false,
+    "git.enabled": false,
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "window.restoreWindows": "none",
+    "workbench.startupEditor": "none"
+  }
+}

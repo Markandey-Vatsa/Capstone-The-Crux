@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    
+    <!-- Enhanced Console Appender with Clean Formatting -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Main Application Log File -->
+    <appender name="FILE_MAIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/crux-main.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/crux-main.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>300MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- News Fetching Log File -->
+    <appender name="FILE_NEWS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/crux-news-fetching.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/crux-news-fetching.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- AI Processing Log File -->
+    <appender name="FILE_AI" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/crux-ai-processing.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/crux-ai-processing.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Database Operations Log File -->
+    <appender name="FILE_DATABASE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/crux-database.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/crux-database.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- API Calls Log File -->
+    <appender name="FILE_API" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/crux-api-calls.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/crux-api-calls.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Performance Log File -->
+    <appender name="FILE_PERFORMANCE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/crux-performance.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/crux-performance.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- User Actions Log File -->
+    <appender name="FILE_USER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/crux-user-actions.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/crux-user-actions.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Logger Configurations for Modularized Services -->
+    
+    <!-- News Services -->
+    <logger name="com.perplexity.newsaggregator.service.ArticleSearchService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_NEWS"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.ArticleSourceService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_NEWS"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.NewsFetchingService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_NEWS"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.GNewsService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_NEWS"/>
+        <appender-ref ref="FILE_API"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <!-- AI Processing Services -->
+    <logger name="com.perplexity.newsaggregator.service.GroqService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_API"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.GroqTaggingService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_API"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.GroqBriefingService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_API"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.ArticleTaggingService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.DailyBriefingService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.GeminiService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_API"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.service.TaxonomyUtil" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <!-- Controllers (User Actions) -->
+    <logger name="com.perplexity.newsaggregator.controller.NewsController" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_USER"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.controller.UserController" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_USER"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <logger name="com.perplexity.newsaggregator.controller.BiasAnalysisController" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AI"/>
+        <appender-ref ref="FILE_USER"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <!-- Database Operations -->
+    <logger name="org.springframework.data.mongodb" level="INFO" additivity="false">
+        <appender-ref ref="FILE_DATABASE"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <!-- Performance Monitoring -->
+    <logger name="com.perplexity.newsaggregator.util.LoggingUtil" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_PERFORMANCE"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </logger>
+    
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_MAIN"/>
+    </root>
+    
+</configuration>
